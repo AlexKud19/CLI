@@ -21,5 +21,10 @@ func newBin(id string, private bool, createdAt time.Time, name string) (*Bin, er
 type BinList []Bin
 
 func main() {
+
+}
+
+func newBinList() BinList {
 	var binList BinList
+	return binList
 }
