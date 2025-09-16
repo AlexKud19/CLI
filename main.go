@@ -25,6 +25,6 @@ func main() {
 }
 
 func newBinList() BinList {
-	var binList BinList
+	binList := make(BinList, 0, 10)
 	return binList
 }
