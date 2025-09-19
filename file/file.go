@@ -1,9 +1,10 @@
 package file
 
 import (
-	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 func ReadFile(name string) ([]byte, error) {
@@ -15,12 +16,9 @@ func ReadFile(name string) ([]byte, error) {
 	return data, nil
 }
 
-func CheckJSON(name string) (bool, error) {
-	data, err := ReadFile(name)
-	if err != nil {
-		return false, err
-	}
-	return json.Valid(data), nil
+func CheckJSON(name string) bool {
+	ext := filepath.Ext(name)
+	return strings.EqualFold(ext, ".json")
 }
 
 func WriteFile(content []byte, name string) {

@@ -16,11 +16,11 @@ func SaveBins(bins bins.BinList) {
 	file.WriteFile(data, "data.json")
 }
 
-func ReadBinList(name string) {
+func ReadBinList(name string) ([]byte, error) {
 	data, err := os.ReadFile(name)
 	if err != nil {
-		fmt.Println(err)
-		return
+		return nil, err
 	}
 	fmt.Println(string(data))
+	return data, nil
 }
