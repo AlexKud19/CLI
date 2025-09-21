@@ -7,22 +7,32 @@ import (
 	"strings"
 )
 
-func ReadFile(name string) ([]byte, error) {
-	data, err := os.ReadFile(name)
+type StorageDb struct {
+	fileName string
+}
+
+func NewStorageDb(name string) *StorageDb {
+	return &StorageDb{
+		fileName: name,
+	}
+}
+
+func (db *StorageDb) Read() ([]byte, error) {
+	data, err := os.ReadFile(db.fileName)
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(data)
+	fmt.Println(string(data))
 	return data, nil
 }
 
-func CheckJSON(name string) bool {
-	ext := filepath.Ext(name)
+func (db *StorageDb) CheckJSON() bool {
+	ext := filepath.Ext(db.fileName)
 	return strings.EqualFold(ext, ".json")
 }
 
-func WriteFile(content []byte, name string) {
-	file, err := os.Create(name)
+func (db *StorageDb) Write(content []byte) {
+	file, err := os.Create(db.fileName)
 	if err != nil {
 		fmt.Println(err)
 		return

@@ -1,7 +1,6 @@
 package bins
 
 import (
-	"cli/app/file"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -39,13 +38,13 @@ func (list *BinList) ToBytes() ([]byte, error) {
 	return json.Marshal(*list)
 }
 
-func (list *BinList) save() {
-	data, err := list.ToBytes()
-	if err != nil {
-		fmt.Println(err)
-	}
-	file.WriteFile(data, "data.json")
-}
+// func (list *BinList) save() {
+// 	data, err := list.ToBytes()
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	file.Write(data)
+// }
 
 func (list *BinList) ReadBinList(name string) {
 	data, err := os.ReadFile(name)
