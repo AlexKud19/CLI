@@ -1,7 +1,9 @@
 package main
 
 import (
+	"cli/app/api"
 	"cli/app/bins"
+	"cli/app/config"
 	"cli/app/file"
 	"cli/app/storage"
 	"fmt"
@@ -23,4 +25,5 @@ func main() {
 	}
 	storage.AddBin(bin)
 	storage.BinList.ReadBinList("data.json")
+	api := api.NewApi(config.NewConfig())
 }
