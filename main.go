@@ -6,12 +6,17 @@ import (
 	"cli/app/storage"
 	"fmt"
 	"time"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println(err)
+	}
 	storage := storage.NewStorage(file.NewStorageDb("data.json"))
-	storage.BinList = bins.NewBinList()
-	bin, err := storage.BinList.NewBin("hellorrr", true, time.Now(), "wwww")
+	bin, err := bins.NewBin("hellorrr", true, time.Now(), "wwww")
 	if err != nil {
 		fmt.Println(err)
 		return

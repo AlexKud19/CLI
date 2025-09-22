@@ -14,7 +14,7 @@ type Bin struct {
 	Name      string    `json:"name,omitempty"`
 }
 
-func (*BinList) NewBin(id string, private bool, createdAt time.Time, name string) (*Bin, error) {
+func NewBin(id string, private bool, createdAt time.Time, name string) (*Bin, error) {
 	return &Bin{
 		Id:        id,
 		Private:   private,

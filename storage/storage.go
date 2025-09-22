@@ -34,7 +34,6 @@ func NewStorage(db StorageDb) *Storage {
 			db:      db,
 		}
 	}
-	fmt.Println(23, binlist)
 	return &Storage{
 		BinList: binlist,
 		db:      db,
@@ -63,8 +62,6 @@ func (storage *Storage) ReadBinList(name string) ([]byte, error) {
 }
 
 func (storage *Storage) AddBin(bin *bins.Bin) {
-	fmt.Println(1, storage.BinList)
 	storage.BinList = append(storage.BinList, *bin)
-	fmt.Println(storage.BinList)
 	storage.SaveBins()
 }
